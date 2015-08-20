@@ -5,12 +5,12 @@
 Set this variable to your preferred notification function.")
 
 (defvar notify-growl-executable 
-  (cond
-   ((string-equal system-type "windows-nt")
+  (pcase system-type
+   (`windows-nt
     "growlnotify.com")
-   ((string-equal system-type "darwin")
+   (`darwin
     "growlnotify")
-   ((string-equal system-type "gnu/linux")
+   (`gnu/linux
     "gol"))
   "Set the path to growlnotify if it isn't executable within your PATH environment")
 
