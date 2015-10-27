@@ -5,12 +5,12 @@
 Set this variable to your preferred notification function.")
 
 (defvar notify-growl-executable 
-  (pcase system-type
-   (`windows-nt
+  (case system-type
+   ('windows-nt
     "growlnotify.com")
-   (`darwin
+   ('darwin
     "growlnotify")
-   (`gnu/linux
+   ('gnu/linux
     "gol"))
   "Set the path to growlnotify if it isn't executable within your PATH environment")
 
@@ -22,15 +22,36 @@ Set this variable to your preferred notification function.")
   "Show TITLE and BODY in the minibuffer."
   (message "Notification: [%s] %s" title body))
 
-(defun notify-growl (title body)
-  "Send message with TITLE and BODY via Growl."
+(defclass os-type () ()
+  "The type of current OS.")
+
+(defclass windows-os (os-type) ())
+(defclass unix-os (os-type) ())
+
+(defconst *os-type*
+  (case system-type
+    ('windows-nt (make-instance windows-os))
+    (:else (make-instance unix-os))))
+
+(defmethod notify-growl% ((os-type windows-os) title body)
+  "Notification using Growl."
+  (start-process "growl"
+		 "growl"
+		 notify-growl-executable
+		 (concat "/t:" title)
+		 body))
+
+(defmethod notify-growl% ((os-type unix-os) title body)
+  "Notification using Growl on UNIX-like platform."
   (start-process "growl"
 		 "growl"
 		 notify-growl-executable
 		 "-t"
 		 title
-		 "-m"
 		 body))
+
+(defun notify-growl (title body)
+  (notify-growl% *os-type* title body))
 
 (provide 'notify)
 
