@@ -1,7 +1,6 @@
 ;;; notify.el - A minimal library for notification in elisp
 
-(eval-when-compile
-  (require 'eieio))
+(require 'eieio)
 
 (defvar notify-function 'notify-minibuffer
   "Function to send notification.
