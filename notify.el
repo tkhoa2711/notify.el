@@ -17,7 +17,7 @@ Set this variable to your preferred notification function.")
   "Set the path to growlnotify if it isn't executable within your PATH environment")
 
 (defun notify (title body)
-  "Send notification with title and body."
+  "Send notification with TITLE and BODY."
   (funcall notify-function title body))
 
 (defun notify-minibuffer (title body)
@@ -37,22 +37,23 @@ Set this variable to your preferred notification function.")
 
 (defmethod notify-growl% ((os-type windows-os) title body)
   "Notification using Growl."
-  (start-process "growl"
-		 "growl"
-		 notify-growl-executable
-		 (concat "/t:" title)
-		 body))
+  (start-process "notify-growl"
+                 "*notify-growl*"
+                 notify-growl-executable
+                 (concat "/t:" title)
+                 body))
 
 (defmethod notify-growl% ((os-type unix-os) title body)
   "Notification using Growl on UNIX-like platform."
-  (start-process "growl"
-		 "growl"
-		 notify-growl-executable
-		 "-t"
-		 title
-		 body))
+  (start-process "notify-growl"
+                 "*notify-growl*"
+                 notify-growl-executable
+                 "-t"
+                 title
+                 body))
 
 (defun notify-growl (title body)
+  "Send a Growl notification with TITLE and BODY."
   (notify-growl% *os-type* title body))
 
 (provide 'notify)
