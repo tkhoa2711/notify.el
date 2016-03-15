@@ -1,0 +1,39 @@
+# -*- mode: org -*-
+#+TITLE: notify.el - A minimal library for notification in emacs lisp
+#+AUTHOR: Khoa Le
+#+EMAIL: ltkhoa2711@gmail.com
+#+STARTUP: showall
+
+* Installation
+
+You can install it simply by cloning this library into your load path.
+Put the following code somewhere in your emacs init file:
+
+#+begin_src elisp
+(require 'notify)
+#+end_src
+
+* Usage
+
+And you're good to go:
+
+#+begin_src elisp
+(notify "title" "hello world!")
+#+end_src
+
+By default, Emacs minibuffer is used. However, if you have [[http://growl.info/][Growl]] install,
+it is supported off the shelf.
+
+#+begin_src elisp
+(setq notify-function 'notify-growl)
+
+;; set path to the "growlnotify" executable if it's not already in your PATH env variable
+;; it's "growlnotify.com" on Windows, and "gol" on Linux
+(setq 'notify-growl-executable "/usr/local/bin/growlnotify")
+#+end_src
+
+In fact, the library is open for anyone to implement their own ~notify-function~.
+
+* License
+
+MIT License
