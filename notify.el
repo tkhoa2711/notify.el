@@ -1,4 +1,48 @@
-;;; notify.el - A minimal library for notification in elisp
+;;; notify.el --- A minimal library for notification in emacs lisp
+;;
+;; Copyright (C) 2015-2016 Khoa Le
+;;
+;; Author: Khoa Le <tkhoa2711@gmail.com
+;; Created: 18 Aug 2015
+;; URL: https://github.com/tkhoa2711/notify.el
+;; Keywords: utility, notification, alert
+;; Version: 1.0
+;; Package-Requires: ()
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Commentary:
+;;
+;; This library provide minimal functionality for notification/alert.
+;; Currently, Emacs minibuffer is used by default. Growl is also supported.
+;;
+;; To enable:
+;;
+;;    (require 'notify)
+;;
+;; Then, a notification can be sent by simply calling:
+;;
+;;    (notify "title" "message")
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Code:
+
 
 (require 'eieio)
 
@@ -58,4 +102,5 @@ Set this variable to your preferred notification function.")
 
 (provide 'notify)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; notify.el ends here
