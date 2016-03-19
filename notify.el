@@ -51,12 +51,12 @@
 Set this variable to your preferred notification function.")
 
 (defvar notify-growl-executable 
-  (case system-type
-   ('windows-nt
+  (pcase system-type
+   (`windows-nt
     "growlnotify.com")
-   ('darwin
+   (`darwin
     "growlnotify")
-   ('gnu/linux
+   (`gnu/linux
     "gol"))
   "Set the path to growlnotify if it isn't executable within your PATH environment")
 
@@ -75,9 +75,9 @@ Set this variable to your preferred notification function.")
 (defclass unix-os (os-type) ())
 
 (defconst *os-type*
-  (case system-type
-    ('windows-nt (make-instance windows-os))
-    (:else (make-instance unix-os))))
+  (pcase system-type
+    (`windows-nt (make-instance windows-os))
+    (_ (make-instance unix-os))))
 
 (defmethod notify-growl% ((os-type windows-os) title body)
   "Notification using Growl."
