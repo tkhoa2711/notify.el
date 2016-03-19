@@ -94,6 +94,7 @@ Set this variable to your preferred notification function.")
                  notify-growl-executable
                  "-t"
                  title
+                 "-m"
                  body))
 
 (defun notify-growl (title body)
