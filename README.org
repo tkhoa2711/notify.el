@@ -4,6 +4,8 @@
 #+EMAIL: ltkhoa2711@gmail.com
 #+STARTUP: showall
 
+[[https://travis-ci.org/tkhoa2711/notify.el][https://travis-ci.org/tkhoa2711/notify.el.svg?branch=master]]
+
 * Installation
 
 You can install it simply by cloning this library into your load path.
