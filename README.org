@@ -13,6 +13,12 @@ Put the following code somewhere in your emacs init file:
 (require 'notify)
 #+end_src
 
+Optionally, you can run the tests to make sure everything works fine:
+
+#+begin_src sh
+make test
+#+end_src
+
 * Usage
 
 And you're good to go:
