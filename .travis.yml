@@ -6,6 +6,8 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       brew update;
       brew install emacs;
+      ls -alrt /usr/local/bin/emacs*;
+      ls -alrt /usr/local/opt/emacs/bin/;
     fi
   # for Linux:
   # PPA for stable Emacs packages
@@ -20,12 +22,21 @@ before_install:
   # install Cask
   - curl -fsSkL --max-time 10 --retry 10 --retry-delay 10
         https://raw.github.com/cask/cask/master/go | python
-  - export PATH="/home/travis/.cask/bin:$PATH"
   - cask
 env:
-  - EMACS=emacs24
-  - EMACS=emacs-snapshot
+  matrix:
+    - EMACS=emacs24
+    - EMACS=emacs-snapshot
+  global:
+    - CASK=$HOME/.cask/bin/cask
+matrix:
+  include:
+    - os: osx
+      language: generic
+      env: EMACS=emacs
 script:
   - emacs --version
   - make test
+notifications:
+  email: false
 
