@@ -5,6 +5,7 @@
 #+STARTUP: showall
 
 [[https://travis-ci.org/tkhoa2711/notify.el][https://travis-ci.org/tkhoa2711/notify.el.svg?branch=master]]
+[[https://opensource.org/licenses/MIT][https://img.shields.io/badge/license-MIT-blue.svg]]
 
 * Installation
 
