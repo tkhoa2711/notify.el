@@ -14,7 +14,6 @@ before_install:
   - cask
 env:
   - EMACS=emacs24
-  - EMACS=emacs25
   - EMACS=emacs-snapshot
 script:
   - emacs --version
